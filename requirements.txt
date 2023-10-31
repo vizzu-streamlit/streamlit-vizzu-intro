@@ -3,3 +3,4 @@ ipyvizzu-story
 streamlit>=1.18.0
 streamlit-vizzu
 st-pages
+pandas
