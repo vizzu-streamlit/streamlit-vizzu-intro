@@ -114,7 +114,7 @@ filter = " && ".join([filter_metric, filter_year, filter_format])
 # -- set config --
 config = {"title": title, "y": y, "x": x, "color": color, "label": label}
 config2 = {"title": "Share of Formats", "x": [measure, "Format"], "legend": None, "y": None, "coordSystem": "polar", "color": color, "label": "Format"}
-config3 = {"title": "Top 3 Years", "y": measure, "x": {"set": "Year", "range":{"max":3}}, "sort": "byValue", "reverse": True, "legend": None, "color": None, "label": measure}
+config3 = {"title": "Top 3 Years", "y": measure, "x": {"set": "Year", "range":{"max":3-0.0000001}}, "sort": "byValue", "reverse": True, "legend": None, "color": None, "label": measure}
 
 config["sort"] = "byValue" if sort and stack_by != "Year" else "none"
 
