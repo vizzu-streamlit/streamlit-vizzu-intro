@@ -226,7 +226,7 @@ chart2.animate(Data.filter(filter), Config(config2), style, delay=0.7, duration=
 with right:
     output = chart2.show()
 
-chart3.animate(Data.filter(filter), Config(config3), style, delay=1.4, duration=1)
+chart3.animate(Data.filter(filter), Config(config3), style, delay=1.4, duration=1.5)
 with right:
     output = chart3.show()
 
