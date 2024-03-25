@@ -30,6 +30,16 @@ style = Style(
     }
 )
 
+handler = '''
+let Year = parseFloat(event.data.text);
+if (!isNaN(Year) && Year > 1950 && Year < 2020 && Year % 5 !== 0) {
+    event.preventDefault();
+}
+'''
+
+# Add handler to the plot-axis-label-draw event
+chart.on('plot-axis-label-draw', handler)
+
 chart.animate(data, style)
 
 chart.feature("tooltip", True)
