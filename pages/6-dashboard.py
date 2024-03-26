@@ -216,17 +216,17 @@ style = Style(
 
 left, right = st.columns([3, 1])
 
-chart.animate(Data.filter(filter), Config(config), style, delay=0, duration=0.7)
+chart.animate(Data.filter(filter), Config(config), style, delay=0, duration=1)
 st.session_state.lastanim = [Data.filter(filter), Config(config), style]
 with left:
     output = chart.show()
 
 # -- display charts --
-chart2.animate(Data.filter(filter), Config(config2), style, delay=0.7, duration=0.7)
+chart2.animate(Data.filter(filter), Config(config2), style, delay=1, duration=0.7)
 with right:
     output = chart2.show()
 
-chart3.animate(Data.filter(filter), Config(config3), style, delay=1.4, duration=1.5)
+chart3.animate(Data.filter(filter), Config(config3), style, delay=1.7, duration=1.5)
 with right:
     output = chart3.show()
 

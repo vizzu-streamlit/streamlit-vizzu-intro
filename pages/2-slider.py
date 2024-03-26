@@ -43,7 +43,7 @@ chart.animate(
             }
         }
     ),
-    delay="0",
+    delay="0", x={"easing": "linear"},
 )
 
 chart.show()
