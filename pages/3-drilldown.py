@@ -26,7 +26,7 @@ style = Style(
                 },
             },
             "paddingLeft": "8em",
-        }
+        },
     }
 )
 
@@ -40,12 +40,12 @@ if (!isNaN(Year) && Year > 1950 && Year < 2020 && Year % 5 !== 0) {
 # Add handler to the plot-axis-label-draw event
 chart.on('plot-axis-label-draw', handler)
 
-chart.animate(data, style)
-
 chart.feature("tooltip", True)
-bar_clicked = chart.get("marker.categories.Year")
+
+bar_clicked = chart.get("target.categories.Year")
 
 if bar_clicked is None:
+    chart.animate(data, style)
     chart.animate(
         Data.filter(),
         Config(

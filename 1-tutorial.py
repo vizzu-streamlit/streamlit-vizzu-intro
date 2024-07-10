@@ -1,6 +1,6 @@
 import pandas as pd
 import streamlit as st
-from streamlit_vizzu import Config, Data, Style, VizzuChart
+from streamlit_vizzu import Config, Data, VizzuChart
 
 # Create a VizzuChart object with the default height and width
 chart = VizzuChart()
@@ -25,8 +25,13 @@ if st.checkbox("Swap"):
 # Show the chart in the app!
 output = chart.show()
 
-if output is not None and "marker" in output:
-    st.write("value of clicked bar:", output["marker"]["values"]["val"])
+if (
+    output is not None
+    and "target" in output
+    and "tagName" in output["target"]
+    and output["target"]["tagName"] == "plot-marker"
+):
+    st.write("value of clicked bar:", output["target"]["values"]["val"])
 
 st.caption("Data shown on the chart")
 st.dataframe(df)
