@@ -2,11 +2,7 @@ import pandas as pd
 import streamlit as st
 from streamlit_vizzu import Config, Data, Style, VizzuChart
 
-st.set_page_config(
-    page_title="Intro to Streamlit-Vizzu",
-    page_icon="🚀",
-    initial_sidebar_state="expanded",
-)
+st.set_page_config(page_title="Intro to Streamlit-Vizzu", page_icon="🚀")
 
 chart = VizzuChart(rerun_on_click=True, default_duration=1, height=380)
 
@@ -36,15 +32,13 @@ style = Style(
     }
 )
 
-handler = '''
+# Add handler
+chart.on("plot-axis-label-draw", """
 let Year = parseFloat(event.data.text);
 if (!isNaN(Year) && Year > 1950 && Year < 2020 && Year % 5 !== 0) {
     event.preventDefault();
 }
-'''
-
-# Add handler to the plot-axis-label-draw event
-chart.on('plot-axis-label-draw', handler)
+""")
 
 chart.feature("tooltip", True)
 
@@ -65,7 +59,7 @@ if bar_clicked is None:
             }
         ),
         style,
-        delay="0",
+        delay=0,
     )
 else:
     chart.animate(Data.filter(f"record['Year'] == '{bar_clicked}' && record['Revenue[$]'] !== 0"))
@@ -83,4 +77,4 @@ else:
 
 chart.show()
 
-"Click on one of the bars to see the drilldown"
+st.caption("Click on one of the bars to see the drilldown")

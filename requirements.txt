@@ -1,6 +1,6 @@
 ipyvizzu>=0.17.0
-ipyvizzu-story
-streamlit>=1.18.0
+ipyvizzustory>=0.15.0
+streamlit>=1.37
 streamlit-vizzu>=0.2.0
 st-pages
 pandas
