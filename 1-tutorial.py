@@ -2,6 +2,12 @@ import pandas as pd
 import streamlit as st
 from streamlit_vizzu import Config, Data, VizzuChart
 
+st.set_page_config(
+    page_title="Intro to Streamlit-Vizzu",
+    page_icon="🚀",
+    initial_sidebar_state="expanded",
+)
+
 # Create a VizzuChart object with the default height and width
 chart = VizzuChart()
 

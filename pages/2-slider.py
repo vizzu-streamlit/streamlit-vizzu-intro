@@ -2,6 +2,12 @@ import pandas as pd
 import streamlit as st
 from streamlit_vizzu import Config, Data, Style, VizzuChart
 
+st.set_page_config(
+    page_title="Intro to Streamlit-Vizzu",
+    page_icon="🚀",
+   # initial_sidebar_state="expanded",
+)
+
 data_frame = pd.read_csv("data/music.csv", dtype={"Year": str})
 
 data = Data()
@@ -21,7 +27,7 @@ chart.animate(
             "y": "Format",
             "groupedBy": "Format",
             "sort": "byValue",
-            "title": f"Music Revenues in {year}",
+            "title": f"Music Revenues before {year}",
         }
     ),
     Style(

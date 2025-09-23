@@ -9,6 +9,12 @@ from streamlit_vizzu import Config, Data, Style, VizzuChart
 from ipyvizzustory import Slide, Step
 from ipyvizzustory.env.py.story import Story
 
+st.set_page_config(
+    page_title="Intro to Streamlit-Vizzu",
+    page_icon="🚀",
+    initial_sidebar_state="expanded",
+)
+
 data_frame = pd.read_csv("data/music2.csv", dtype={"Year": str})
 
 data = Data()
