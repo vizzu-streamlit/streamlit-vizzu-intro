@@ -5,7 +5,7 @@ import streamlit as st
 
 from streamlit_vizzu import Config, Data, Style, VizzuChart
 
-data_frame = pd.read_csv("data/sales.csv")
+data_frame = pd.read_csv("data/sales_simple.csv")
 data = Data()
 data.add_df(data_frame)
 

@@ -8,9 +8,6 @@ st.set_page_config(
     initial_sidebar_state="expanded",
 )
 
-# 🔒 Pin Vizzu JS to version 0.9 (same as local)
-VizzuChart.set_lib("https://cdn.jsdelivr.net/npm/vizzu@0.9/dist/vizzu.min.js")
-
 # Create a VizzuChart object
 chart = VizzuChart()
 
@@ -34,7 +31,6 @@ if st.checkbox("Swap"):
 # Show the chart in the app!
 output = chart.show()
 
-# Adapted for Vizzu 0.9 schema
 if output and "target" in output and "tagName" in output["target"]:
     if output["target"]["tagName"] == "plot-marker":
         st.write("value of clicked bar:", output["target"]["values"]["val"])
