@@ -17,11 +17,17 @@ year = st.slider("Pick a year", min_value=1973, max_value=2020, value=1997)
 
 chart.animate(
     Data.filter(f"record.Year <= '{year}'"),
-    Config.groupedBar(
+    Config(
         {
-            "x": "Revenue[$]",
-            "y": "Format",
-            "groupedBy": "Format",
+            "channels": {
+                "x": {"set": ["Revenue[$]"]},
+                "y": {"set": ["Format"]},
+                "color": {"set": ["Format"]},
+                "label": {"set": ["Revenue[$]"]},
+                "size": {"set": []},
+                "lightness": {"set": []},
+            },
+            "geometry": "rectangle",
             "sort": "byValue",
             "title": f"Music Revenues before {year}",
         }
@@ -29,7 +35,12 @@ chart.animate(
     Style(
         {
             "plot": {
-                "xAxis": {"label": {"numberScale": "shortScaleSymbolUS"}},
+                "xAxis": {
+                    "label": {
+                        "numberFormat": "prefixed",
+                        "numberScale": "shortScaleSymbolUS",
+                    }
+                },
                 "marker": {
                     "colorPalette": (
                         "#b74c20FF #c47f58FF #1c9761FF #ea4549FF #875792FF #3562b6FF "

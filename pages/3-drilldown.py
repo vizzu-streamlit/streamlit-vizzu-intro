@@ -15,7 +15,12 @@ style = Style(
     {
         "plot": {
             "xAxis": {"label": {"angle": "-1.1"}},
-            "yAxis": {"label": {"numberScale": "shortScaleSymbolUS"}},
+            "yAxis": {
+                "label": {
+                    "numberFormat": "prefixed",
+                    "numberScale": "shortScaleSymbolUS",
+                }
+            },
             "marker": {
                 "colorPalette": (
                     "#b74c20FF #c47f58FF #1c9761FF #ea4549FF #875792FF #3562b6FF "
@@ -34,8 +39,8 @@ style = Style(
 
 # Add handler
 chart.on("plot-axis-label-draw", """
-let Year = parseFloat(event.data.text);
-if (!isNaN(Year) && Year > 1950 && Year < 2020 && Year % 5 !== 0) {
+const year = Number.parseInt(event.detail?.text, 10);
+if (Number.isFinite(year) && year > 1950 && year < 2020 && year % 5 !== 0) {
     event.preventDefault();
 }
 """)
@@ -50,11 +55,16 @@ if bar_clicked is None:
         Data.filter(),
         Config(
             {
-                "x": "Year",
-                "y": "Revenue[$]",
+                "channels": {
+                    "x": {"set": ["Year"]},
+                    "y": {"set": ["Revenue[$]"]},
+                    "color": {"set": []},
+                    "label": {"set": []},
+                    "size": {"set": []},
+                    "lightness": {"set": []},
+                },
+                "geometry": "rectangle",
                 "sort": "none",
-                "color": None,
-                "label": None,
                 "title": "Music Revenues",
             }
         ),
@@ -64,11 +74,17 @@ if bar_clicked is None:
 else:
     chart.animate(Data.filter(f"record['Year'] == '{bar_clicked}' && record['Revenue[$]'] !== 0"))
     chart.animate(
-        Config.groupedColumn(
+        Config(
             {
-                "x": "Format",
-                "y": "Revenue[$]",
-                "groupedBy": "Format",
+                "channels": {
+                    "x": {"set": ["Format"]},
+                    "y": {"set": ["Revenue[$]"]},
+                    "color": {"set": ["Format"]},
+                    "label": {"set": ["Revenue[$]"]},
+                    "size": {"set": []},
+                    "lightness": {"set": []},
+                },
+                "geometry": "rectangle",
                 "sort": "byValue",
                 "title": f"Drilldown for Year {bar_clicked}",
             }
